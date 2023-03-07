@@ -1,0 +1,22 @@
+
+.pollutionRow   {
+  display: flex;
+  justify-content: space-between;
+  position:relative;
+	right:410px;
+	top: 100px;
+	width:50%;
+	
+}
+
+.pollutionValue{
+	margin:0;  
+	font-weight: 600;
+  font-size: 12px;
+
+}
+.pollutionLabel{
+	font-weight: 600;
+  font-size: 12px;
+
+}
