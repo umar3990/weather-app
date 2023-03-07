@@ -1,49 +1,50 @@
+import { Box, Stack, Typography } from "@mui/material";
 import React from "react";
-import "./current-weather.css";
 
-//RETRIEVES DATA FROM API AMD DISPLAYS SELETECED DATA WITH A BREIF DESCRIPTION 
+//RETRIEVES DATA FROM API AMD DISPLAYS SELETECED DATA WITH A BREIF DESCRIPTION
 
 const CurrentWeather = ({ data }) => {
-  return (
-    <div className="weatherElement">
-      <div className="top">
-        <div> 
-          <p className="location">{data.city}</p>
-          <p className="weatherDescription">{data.weather[0].description}</p>
-        </div>
-        <img //DISPLAY ICON FOR WEATHER
-         
-          className="weatherIcon"
-          src={`icons/${data.weather[0].icon}.png`}
-        /> 
-      </div>
-      <div className="bottom">
-        <p className="temperature">{Math.round(data.main.temp)}c</p>
-        <div className="extras">
-       
-          <div className="weatherRow">
-            <span className="weatherLabel">Feels like</span>
-            <span className="weatherLabel">
-              {Math.round(data.main.feels_like)}c
-            </span>
-          </div>
-          <div className="weatherRow">
-            <span className="weatherLabel">Wind</span>
-            <span className="weatherLabel">{data.wind.speed} m/s</span>
-          </div>
-          <div className="weatherRow">
-            <span className="weatherLabel">Humidity</span>
-            <span className="weatherLabel">{data.main.humidity}%</span>
-          </div>
-          <div className="weatherRow">
-            <span className="weatherLabel">Pressure</span>
-            <span className="weatherLabel">{data.main.pressure} hPa</span>
-          </div>
+	return (
+		<>
+			<Stack
+				direction="row"
+				alignItems="center"
+				justifyContent="center"
+				gap={2}
+			>
+				<img //DISPLAY ICON FOR WEATHER
+					alt=""
+					src={`icons/${data.weather[0].icon}.png`}
+				/>
+				<Box>
+					<Typography fontSize="22px">{data.city}</Typography>
+					<Typography fontSize="18px">{data.weather[0].description}</Typography>
+					<Typography fontSize="18px">{Math.round(data.main.temp)}c</Typography>
+				</Box>
+			</Stack>
 
-        </div>
-      </div>
-    </div>
-  );
+			<Stack direction="column" gap={1} mt={2}>
+				<Stack direction="row" justifyContent="space-between">
+					<Typography fontSize="16px">Feels like</Typography>
+					<Typography fontSize="16px">
+						{Math.round(data.main.feels_like)}c
+					</Typography>
+				</Stack>
+				<Stack direction="row" justifyContent="space-between">
+					<Typography fontSize="16px">Wind</Typography>
+					<Typography fontSize="16px">{data.wind.speed} m/s</Typography>
+				</Stack>
+				<Stack direction="row" justifyContent="space-between">
+					<Typography fontSize="16px">Humidity</Typography>
+					<Typography fontSize="16px">{data.main.humidity}%</Typography>
+				</Stack>
+				<Stack direction="row" justifyContent="space-between">
+					<Typography fontSize="16px">Pressure</Typography>
+					<Typography fontSize="16px">{data.main.pressure} hPa</Typography>
+				</Stack>
+			</Stack>
+		</>
+	);
 };
 
 export default CurrentWeather;
